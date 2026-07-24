@@ -17,4 +17,11 @@ public class ListaPartidas {
             actual.setSiguiente(nuevoNodo);
         }
     }
+    public void mostrarHistorial() {
+        NodoLista actual = inicio;
+        while (actual != null) {
+            System.out.println("Partida: " + actual.getPartida().getidPartida() + " Resultado: " + actual.getPartida().getResultado());
+            actual = actual.getSiguiente();
+        }
+    }
 }
