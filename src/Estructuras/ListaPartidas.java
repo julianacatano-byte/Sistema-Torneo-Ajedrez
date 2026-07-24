@@ -24,4 +24,14 @@ public class ListaPartidas {
             actual = actual.getSiguiente();
         }
     }
+    public Partida buscarPartida(int idPartida){
+        NodoLista actual = inicio;
+        while (actual != null) {
+            if (actual.getPartida().getidPartida() == idPartida) {
+                return actual.getPartida();
+            }
+            actual = actual.getSiguiente();
+        }
+        return null;
+    }
 }

@@ -9,6 +9,12 @@ public class Main {
         Jugador jugador2 = new Jugador("Carlos", "456");
         Partida partida1 = new Partida(1, jugador1, jugador2, "Ganó blancas");
         lista.agregarPartida(partida1);
+        Partida encontrada = lista.buscarPartida(1);
+        if (encontrada != null) {
+            System.out.println("Partida encontrada: " + encontrada.getResultado());
+        } else {
+            System.out.println("La partida no existe");
+        }
         lista.mostrarHistorial();
     }
 }
