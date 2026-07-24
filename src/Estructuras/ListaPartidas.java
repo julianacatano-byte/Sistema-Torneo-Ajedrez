@@ -34,4 +34,13 @@ public class ListaPartidas {
         }
         return null;
     }
+    public int cantidadPartidas(){
+        int contador = 0;
+        NodoLista actual = inicio;
+        while(actual != null){
+            contador++;
+            actual = actual.getSiguiente();
+        }
+        return contador;
+    }
 }
