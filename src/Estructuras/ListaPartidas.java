@@ -1,4 +1,20 @@
 package Estructuras;
-
+import Modelos.Partida;
 public class ListaPartidas {
+    public NodoLista inicio;
+    public ListaPartidas(){
+        inicio = null;
+    }
+    public void agregarPartida( Partida partida){
+        NodoLista nuevoNodo = new NodoLista(partida);
+        if (inicio == null){
+            inicio = nuevoNodo;
+    }else{
+            NodoLista actual = inicio;
+            while (actual.getSiguiente() != null) {
+                actual = actual.getSiguiente();
+            }
+            actual.setSiguiente(nuevoNodo);
+        }
+    }
 }
