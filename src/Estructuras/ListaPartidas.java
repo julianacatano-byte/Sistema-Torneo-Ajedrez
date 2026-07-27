@@ -9,7 +9,7 @@ public class ListaPartidas {
         NodoLista nuevoNodo = new NodoLista(partida);
         if (inicio == null){
             inicio = nuevoNodo;
-    }else{
+        }else{
             NodoLista actual = inicio;
             while (actual.getSiguiente() != null) {
                 actual = actual.getSiguiente();
@@ -17,6 +17,7 @@ public class ListaPartidas {
             actual.setSiguiente(nuevoNodo);
         }
     }
+
     public void mostrarHistorial() {
         NodoLista actual = inicio;
         while (actual != null) {
@@ -24,6 +25,7 @@ public class ListaPartidas {
             actual = actual.getSiguiente();
         }
     }
+
     public Partida buscarPartida(int idPartida){
         NodoLista actual = inicio;
         while (actual != null) {
@@ -34,6 +36,7 @@ public class ListaPartidas {
         }
         return null;
     }
+
     public int cantidadPartidas(){
         int contador = 0;
         NodoLista actual = inicio;
@@ -42,5 +45,33 @@ public class ListaPartidas {
             actual = actual.getSiguiente();
         }
         return contador;
+    }
+
+    // Eliminar una partida del historial
+    public boolean eliminarPartida(int idPartida) {
+        if (inicio == null) {
+            return false;
+        }
+
+        if (inicio.getPartida().getidPartida() == idPartida) {
+            inicio = inicio.getSiguiente();
+            return true;
+        }
+        NodoLista anterior = inicio;
+        NodoLista actual = inicio.getSiguiente();
+
+        while (actual != null) {
+            if (actual.getPartida().getidPartida() == idPartida) {
+                anterior.setSiguiente(actual.getSiguiente());
+                return true;
+            }
+            anterior = actual;
+            actual = actual.getSiguiente();
+        }
+        return false;
+    }
+
+    public boolean isEmpty() {
+        return inicio == null;
     }
 }
