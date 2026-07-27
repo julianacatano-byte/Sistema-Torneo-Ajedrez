@@ -10,10 +10,6 @@ public class ArbolJugador {
         return raiz;
     }
 
-/*
-    INSERTAR
- */
-
     public void insertar(Jugador jugador) {
 
         NodoArbol nuevo = new NodoArbol(jugador);
@@ -26,60 +22,42 @@ public class ArbolJugador {
         NodoArbol actual = raiz;
 
         while (true) {
-
-
             if (jugador.getPuntaje() < actual.getJugador().getPuntaje()) {
-
                 if (actual.getIzquierda() == null) {
                     actual.setIzquierda(nuevo);
                     return;
                 }
-
                 actual = actual.getIzquierda();
 
             } else if (jugador.getPuntaje() > actual.getJugador().getPuntaje()) {
-
                 if (actual.getDerecha() == null) {
                     actual.setDerecha(nuevo);
                     return;
                 }
-
                 actual = actual.getDerecha();
 
             } else {
-
                 // Si tienen el mismo puntaje desempata por cédula
-
                 if (jugador.getCedula().compareTo(actual.getJugador().getCedula()) < 0) {
-
                     if (actual.getIzquierda() == null) {
                         actual.setIzquierda(nuevo);
                         return;
                     }
-
                     actual = actual.getIzquierda();
 
                 } else {
-
                     if (actual.getDerecha() == null) {
                         actual.setDerecha(nuevo);
                         return;
                     }
-
                     actual = actual.getDerecha();
-
                 }
-
             }
-
         }
-
     }
 
     public Jugador buscarCedula(String cedula) {
-
         return buscarRecursivo(raiz, cedula);
-
     }
 
     private Jugador buscarRecursivo(NodoArbol nodo, String cedula) {
@@ -87,7 +65,6 @@ public class ArbolJugador {
         if (nodo == null) {
             return null;
         }
-
         if (nodo.getJugador().getCedula().equals(cedula)) {
             return nodo.getJugador();
         }
@@ -97,50 +74,39 @@ public class ArbolJugador {
         if (izquierda != null) {
             return izquierda;
         }
-
         return buscarRecursivo(nodo.getDerecha(), cedula);
-
     }
 
-/*
-    IMPRIMIR EN ORDEN
- */
+    public int cantidadJugadores() {
+        return cantidad(raiz);
+    }
+
+    private int cantidad(NodoArbol nodo) {
+        if (nodo == null) {
+            return 0;
+        }
+        return 1 + cantidad(nodo.getIzquierda()) + cantidad(nodo.getDerecha());
+    }
 
     public void mostrarRanking() {
-
         inOrden(raiz);
-
     }
 
     private void inOrden(NodoArbol nodo) {
-
         if (nodo == null) {
             return;
         }
-
         inOrden(nodo.getIzquierda());
-
-        System.out.println(
-                nodo.getJugador().getNombre()
-                        + "  Puntaje: "
-                        + nodo.getJugador().getPuntaje());
-
+        System.out.println(nodo.getJugador().getNombre() + "  Puntaje: " + nodo.getJugador().getPuntaje());
         inOrden(nodo.getDerecha());
 
     }
 
-/*
-    BUSCAR NODO MENOR
- */
-
     private NodoArbol menor(NodoArbol nodo) {
-
         while (nodo.getIzquierda() != null) {
             nodo = nodo.getIzquierda();
         }
-
         return nodo;
-
     }
 
     public void eliminar(Jugador jugador) {
@@ -191,6 +157,41 @@ public class ArbolJugador {
         insertar(jugador);
 
     }
+//La utilizamos para recorrer el arbol por niveles y saber cuando detener el recorrido
+    public int altura() {
+        return altura(raiz);
+    }
 
+    private int altura(NodoArbol nodo) {
+        if (nodo == null) {
+            return 0;
+        }
+        int izquierda = altura(nodo.getIzquierda());
+        int derecha = altura(nodo.getDerecha());
+
+        if (izquierda > derecha) {
+            return izquierda + 1;
+        }
+        return derecha + 1;
+    }
+
+    public void mostrarPorNiveles() {
+        int altura = altura();
+        for (int i = 1; i <= altura; i++) {
+            System.out.println("Nivel " + (i - 1));
+            imprimirNivel(raiz, i);
+        }
+    }
+
+    private void imprimirNivel(NodoArbol nodo, int nivel) {
+        if (nodo == null)
+            return;
+        if (nivel == 1) {
+            System.out.println(nodo.getJugador().getNombre());
+        } else {
+            imprimirNivel(nodo.getIzquierda(), nivel - 1);
+            imprimirNivel(nodo.getDerecha(), nivel - 1);
+        }
+    }
 }
 

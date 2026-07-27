@@ -10,7 +10,6 @@ public class AdministradorTorneo {
     private int siguienteIdPartida;
 
     public AdministradorTorneo() {
-
         cola = new ColaJugadores();
         ranking = new ArbolJugador();
         historial = new ListaPartidas();
@@ -103,5 +102,21 @@ public class AdministradorTorneo {
 
     public void mostrarHistorial() {
         historial.mostrarHistorial();
+    }
+
+    public Jugador buscarJugador(String cedula) {
+        return ranking.buscarCedula(cedula);
+    }
+
+    public boolean anularPartida(int idPartida) {
+        return historial.eliminarPartida(idPartida);
+    }
+
+    public int jugadoresEnEspera() {
+        return cola.cantidadJugadoresEnEspera();
+    }
+
+    public int totalPartidas() {
+        return historial.cantidadPartidas();
     }
 }
