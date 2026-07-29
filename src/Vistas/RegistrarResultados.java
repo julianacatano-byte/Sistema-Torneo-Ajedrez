@@ -30,8 +30,8 @@ public class RegistrarResultados {
     private AdministradorTorneo administrador;
 
     public RegistrarResultados(Window parent, AdministradorTorneo administrador) {
-        this.administrador=administrador;
-        this.parent=parent;
+        this.administrador = administrador;
+        this.parent = parent;
 
         frame = new JFrame("Registrar Resultados");
         frame.setContentPane(panelPrincipal);
@@ -40,42 +40,13 @@ public class RegistrarResultados {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        ButtonGroup grupo = new ButtonGroup();
+        grupo.add(rbBlancas);
+        grupo.add(rbNegras);
+        grupo.add(rbEmpate);
+
         regresarButton.addActionListener((ActionEvent e) -> regresar());
-        btnRegistrarResultado.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                int id = Integer.parseInt(textIDPartida.getText());
-
-                String resultado = "";
-
-                if (rbBlancas.isSelected()) {
-                    resultado = "Blancas";
-                } else if (rbNegras.isSelected()) {
-                    resultado = "Negras";
-                } else if (rbEmpate.isSelected()) {
-                    resultado = "Empate";
-                } else {
-                    JOptionPane.showMessageDialog(null, "Seleccione un resultado");
-                    return;
-                }
-
-                Partida partida = administrador.buscarPartida(id);
-
-                if (partida == null) {
-                    JOptionPane.showMessageDialog(null, "La partida no existe.");
-                    return;
-                }
-
-                int calidadBlancas = Integer.parseInt(textCalidadBlancas.getText());
-                int calidadNegras = Integer.parseInt(textCalidadNegras.getText());
-
-                administrador.registrarResultado(partida, resultado, calidadBlancas, calidadNegras);
-
-                JOptionPane.showMessageDialog(null, "Resultado registrado correctamente.");
-            }
-        });
-
+        btnRegistrarResultado.addActionListener((ActionEvent e) -> registrarResultado());
 
         btnLimpiar.addActionListener(new ActionListener() {
             @Override
@@ -98,5 +69,68 @@ public class RegistrarResultados {
             parent.setVisible(true);
             parent.requestFocus();
         }
+    }
+
+    private void registrarResultado() {
+
+        if (!validarNumero(textIDPartida.getText(), "ID de la partida")) {
+            return;
+        }
+        if (!validarNumero(textCalidadBlancas.getText(), "Calidad Blancas")) {
+            return;
+        }
+        if (!validarNumero(textCalidadNegras.getText(), "Calidad Negras")) {
+            return;
+        }
+
+        int id = Integer.parseInt(textIDPartida.getText());
+        Partida partida = administrador.buscarPartida(id);
+        if (partida == null) {
+            JOptionPane.showMessageDialog(frame, "La partida no existe.");
+            return;
+        }
+
+        String resultado = "";
+
+        if (rbBlancas.isSelected()) {
+            resultado = "Blancas";
+
+        } else if (rbNegras.isSelected()) {
+            resultado = "Negras";
+        } else if (rbEmpate.isSelected()) {
+            resultado = "Empate";
+        } else {
+            JOptionPane.showMessageDialog(frame, "Seleccione un resultado.");
+            return;
+        }
+
+        int calidadBlancas = Integer.parseInt(textCalidadBlancas.getText());
+
+        int calidadNegras = Integer.parseInt(textCalidadNegras.getText());
+
+        administrador.registrarResultado(partida, resultado, calidadBlancas, calidadNegras);
+
+        JOptionPane.showMessageDialog(frame, "Resultado registrado correctamente.");
+
+    }
+
+    private boolean validarNumero(String valor, String nombreCampo) {
+
+        if (valor.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "El campo " + nombreCampo + " es obligatorio.");
+            return false;
+
+        }
+
+        try {
+            Integer.parseInt(valor);
+            return true;
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "El campo " + nombreCampo + " debe contener solamente números.");
+            return false;
+
+        }
+
     }
 }

@@ -42,6 +42,11 @@ public class RegistrarJugador {
             JOptionPane.showMessageDialog(frame, "Debe completar todos los campos.");
             return;
         }
+
+        if (!validarNumero(cedula)) {
+            return;
+        }
+
         if (administrador.buscarJugador(cedula) != null) {
             JOptionPane.showMessageDialog(frame, "Ya existe un jugador con esa cédula.");
             return;
@@ -64,6 +69,18 @@ public class RegistrarJugador {
 
             parent.setVisible(true);
             parent.requestFocus();
+
+        }
+
+    }
+
+    private boolean validarNumero(String valor) {
+        try {
+            Integer.parseInt(valor);
+            return true;
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "La cédula debe ser solo números y sin puntos, ni comas");
+            return false;
 
         }
 
