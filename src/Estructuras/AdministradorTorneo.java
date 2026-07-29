@@ -96,8 +96,9 @@ public class AdministradorTorneo {
         return historial.buscarPartida(id);
     }
 
-    public void mostrarRanking() {
-        ranking.mostrarRanking();
+    public String mostrarRanking() {
+        return ranking.mostrarRanking();
+
     }
 
     public void mostrarHistorial() {

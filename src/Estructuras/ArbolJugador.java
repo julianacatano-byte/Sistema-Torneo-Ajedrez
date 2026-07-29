@@ -88,18 +88,18 @@ public class ArbolJugador {
         return 1 + cantidad(nodo.getIzquierda()) + cantidad(nodo.getDerecha());
     }
 
-    public void mostrarRanking() {
-        inOrden(raiz);
+
+    public String mostrarRanking() {
+        StringBuilder sb = new StringBuilder();
+        inOrden(raiz, sb);
+        return sb.toString();
     }
 
-    private void inOrden(NodoArbol nodo) {
-        if (nodo == null) {
-            return;
-        }
-        inOrden(nodo.getIzquierda());
-        System.out.println(nodo.getJugador().getNombre() + "  Puntaje: " + nodo.getJugador().getPuntaje());
-        inOrden(nodo.getDerecha());
-
+    private void inOrden(NodoArbol nodo, StringBuilder sb) {
+        if (nodo == null) return;
+        inOrden(nodo.getIzquierda(), sb);
+        sb.append(nodo.getJugador().getNombre()).append("  Puntaje: ").append(nodo.getJugador().getPuntaje()).append("\n");
+        inOrden(nodo.getDerecha(), sb);
     }
 
     private NodoArbol menor(NodoArbol nodo) {
@@ -157,7 +157,8 @@ public class ArbolJugador {
         insertar(jugador);
 
     }
-//La utilizamos para recorrer el arbol por niveles y saber cuando detener el recorrido
+
+    //La utilizamos para recorrer el arbol por niveles y saber cuando detener el recorrido
     public int altura() {
         return altura(raiz);
     }
@@ -194,4 +195,6 @@ public class ArbolJugador {
         }
     }
 }
+
+
 

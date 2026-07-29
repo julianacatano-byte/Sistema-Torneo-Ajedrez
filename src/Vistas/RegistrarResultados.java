@@ -1,8 +1,10 @@
 package Vistas;
 
+import Estructuras.AdministradorTorneo;
 import Estructuras.ListaPartidas;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,10 +22,19 @@ public class RegistrarResultados {
     private JButton btnLimpiar;
     private JTextField textIDPartida;
     private JPanel panelPrincipal;
-
+    private Window parent;
     private ListaPartidas listaPartidas;
+    private AdministradorTorneo administrador;
 
-    public RegistrarResultados() {
+    public RegistrarResultados(Window parent, AdministradorTorneo administrador) {
+        this.administrador=administrador;
+        this.parent=parent;
+        JFrame frame = new JFrame("Registrar Resultados");
+        frame.setContentPane((JPanel) btnRegistrarResultado.getParent());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
         btnRegistrarResultado.addActionListener(new ActionListener() {
             @Override
@@ -65,12 +76,16 @@ public class RegistrarResultados {
         });
     }
 
-    public void mostrar() {
-        JFrame frame = new JFrame("Registrar Resultados");
-        frame.setContentPane((JPanel) btnRegistrarResultado.getParent());
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+
+    public void regresarButton() {
+        regresarButton.addActionListener(e -> {
+            this.dispose();
+            if (parent != null) {
+                parent.requestFocus();
+                parent.revalidate();
+                parent.setVisible(true);
+
+            }
+        });
     }
 }
