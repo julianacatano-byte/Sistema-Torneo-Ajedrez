@@ -28,6 +28,9 @@ public class BuscarCedula extends JDialog {
         buscarButton.addActionListener((ActionEvent e) -> buscarJugador());
         regresarButton.addActionListener((ActionEvent e) -> regresar());
 
+        pack(); // Ajusta el tamaño según los componentes
+        setLocationRelativeTo(null); // Lo centra respecto a la ventana padre
+
     }
 
     private void buscarJugador() {

@@ -40,6 +40,12 @@ public class RegistrarResultados {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+
+        ButtonGroup grupo = new ButtonGroup();
+        grupo.add(rbBlancas);
+        grupo.add(rbNegras);
+        grupo.add(rbEmpate);
+
         regresarButton.addActionListener((ActionEvent e) -> regresar());
         btnRegistrarResultado.addActionListener((ActionEvent e) -> registrarResultado());
 

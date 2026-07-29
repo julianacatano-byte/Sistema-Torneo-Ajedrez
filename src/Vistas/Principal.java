@@ -40,6 +40,8 @@ public class Principal {
                 if (ventana != null) ventana.dispose();
             }
         });
+
+
     }
 
     public void registrarJugador(){

@@ -31,6 +31,9 @@ public class RetirarJugador extends JDialog {
         buttonRetirar.addActionListener((ActionEvent e) -> retirarJugador());
         regresarButton.addActionListener((ActionEvent e) -> regresar());
 
+        pack(); // Ajusta el tamaño según los componentes
+        setLocationRelativeTo(null); // Lo centra respecto a la ventana padre
+
     }
 
     private void buscarJugador() {

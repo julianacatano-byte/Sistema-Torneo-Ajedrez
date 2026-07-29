@@ -26,7 +26,11 @@ public class Ranking extends JDialog {
         textLista.setEditable(false);
         mostrarHistorial();
         regresarButton.addActionListener((ActionEvent e) -> regresar());
-        }
+
+        pack(); // Ajusta el tamaño según los componentes
+        setLocationRelativeTo(null); // Lo centra respecto a la ventana padre
+
+    }
 
 
     public void mostrarHistorial(){

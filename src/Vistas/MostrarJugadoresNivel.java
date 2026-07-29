@@ -25,7 +25,8 @@ public class MostrarJugadoresNivel extends JDialog {
         buttonMostrar.addActionListener((ActionEvent e) -> mostrar());
         regresarButton.addActionListener((ActionEvent e) -> regresar());
 
-
+        pack(); // Ajusta el tamaño según los componentes
+        setLocationRelativeTo(null); // Lo centra respecto a la ventana padre
 
     }
     private void mostrar(){
