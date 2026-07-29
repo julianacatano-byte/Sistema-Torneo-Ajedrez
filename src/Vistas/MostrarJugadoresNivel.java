@@ -4,6 +4,7 @@ import Estructuras.AdministradorTorneo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 
 public class MostrarJugadoresNivel extends JDialog {
@@ -20,7 +21,11 @@ public class MostrarJugadoresNivel extends JDialog {
         this.administrador=administrador;
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(buttonMostrar);
+        textInformacion.setEditable(false);
+        buttonMostrar.addActionListener((ActionEvent e) -> mostrar());
+        regresarButton.addActionListener((ActionEvent e) -> regresar());
+
+
 
     }
     private void mostrar(){
@@ -34,8 +39,7 @@ public class MostrarJugadoresNivel extends JDialog {
         }
     }
 
-    public void regresarButton() {
-        regresarButton.addActionListener(e -> {
+    public void regresar() {
             this.dispose();
             if (parent != null) {
                 parent.requestFocus();
@@ -43,6 +47,5 @@ public class MostrarJugadoresNivel extends JDialog {
                 parent.setVisible(true);
 
             }
-        });
     }
 }

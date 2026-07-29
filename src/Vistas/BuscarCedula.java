@@ -50,7 +50,6 @@ public class BuscarCedula extends JDialog {
     }
 
     public void regresar() {
-        regresarButton.addActionListener(e -> {
             this.dispose();
             if (parent != null) {
                 parent.requestFocus();
@@ -58,7 +57,6 @@ public class BuscarCedula extends JDialog {
                 parent.setVisible(true);
 
             }
-        });
     }
 
 }

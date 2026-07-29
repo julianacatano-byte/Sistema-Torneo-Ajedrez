@@ -90,6 +90,12 @@ public class AdministradorTorneo {
 
     public void retirarJugador(Jugador jugador) {
         ranking.eliminar(jugador);
+
+        boolean eliminado = cola.eliminarJugador(jugador.getCedula());
+        if (!eliminado) {
+            System.out.println("El jugador no estaba en la cola.");
+        }
+
     }
 
     public Partida buscarPartida(int id) {

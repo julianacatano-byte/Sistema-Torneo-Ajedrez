@@ -20,12 +20,14 @@ public class CrearPartida {
     public CrearPartida(Window parent, AdministradorTorneo administrador) {
         this.administrador=administrador;
         this.parent=parent;
+
         frame = new JFrame("Crear Partida");
         frame.setContentPane(panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        txtJugadoresEspera.setEditable(false);
 
         btnCrearPartida.addActionListener((ActionEvent e) -> crearPartida());
         regresarButton.addActionListener((ActionEvent e) -> regresar());

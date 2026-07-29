@@ -2,6 +2,7 @@ package Vistas;
 
 import Estructuras.AdministradorTorneo;
 import Estructuras.ListaPartidas;
+import Modelos.Partida;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,6 +40,7 @@ public class RegistrarResultados {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        regresarButton.addActionListener((ActionEvent e) -> regresar());
         btnRegistrarResultado.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,9 +50,9 @@ public class RegistrarResultados {
                 String resultado = "";
 
                 if (rbBlancas.isSelected()) {
-                    resultado = "Ganaron blancas";
+                    resultado = "Blancas";
                 } else if (rbNegras.isSelected()) {
-                    resultado = "Ganaron negras";
+                    resultado = "Negras";
                 } else if (rbEmpate.isSelected()) {
                     resultado = "Empate";
                 } else {
@@ -58,7 +60,20 @@ public class RegistrarResultados {
                     return;
                 }
 
-                JOptionPane.showMessageDialog(null, "Partida: " + id + "\nResultado: " + resultado);}
+                Partida partida = administrador.buscarPartida(id);
+
+                if (partida == null) {
+                    JOptionPane.showMessageDialog(null, "La partida no existe.");
+                    return;
+                }
+
+                int calidadBlancas = Integer.parseInt(textCalidadBlancas.getText());
+                int calidadNegras = Integer.parseInt(textCalidadNegras.getText());
+
+                administrador.registrarResultado(partida, resultado, calidadBlancas, calidadNegras);
+
+                JOptionPane.showMessageDialog(null, "Resultado registrado correctamente.");
+            }
         });
 
 

@@ -27,6 +27,7 @@ public class HistorialPartidas {
         ventana.setSize(600, 400);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setLocationRelativeTo(null);
+        AreaHistorial.setEditable(false);
 
         btnActualizar.addActionListener(e -> {
             JOptionPane.showMessageDialog(null, "Historial actualizado");

@@ -4,11 +4,12 @@ import Estructuras.AdministradorTorneo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 
 public class Ranking extends JDialog {
     private JPanel contentPane;
-    private JButton btnRegresar;
+    private JButton regresarButton;
     private JPanel mostrarLista;
     private JLabel lblRanking;
     private JTextArea textLista;
@@ -24,7 +25,8 @@ public class Ranking extends JDialog {
         setModal(true);
         textLista.setEditable(false);
         mostrarHistorial();
-    }
+        regresarButton.addActionListener((ActionEvent e) -> regresar());
+        }
 
 
     public void mostrarHistorial(){
@@ -37,8 +39,7 @@ public class Ranking extends JDialog {
         }
     }
 
-    public void regresarButton() {
-        btnRegresar.addActionListener(e -> {
+    public void regresar() {
             this.dispose();
             if (parent != null) {
                 parent.requestFocus();
@@ -46,7 +47,6 @@ public class Ranking extends JDialog {
                 parent.setVisible(true);
 
             }
-        });
     }
 
 }

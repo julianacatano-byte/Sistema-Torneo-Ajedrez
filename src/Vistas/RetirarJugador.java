@@ -26,13 +26,11 @@ public class RetirarJugador extends JDialog {
         this.parent=parent;
         setContentPane(contentPane);
         setModal(true);
+        textInformacion.setEditable(false);
         buscarButton.addActionListener((ActionEvent e) -> buscarJugador());
         buttonRetirar.addActionListener((ActionEvent e) -> retirarJugador());
+        regresarButton.addActionListener((ActionEvent e) -> regresar());
 
-        regresarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {;
-            }
-        });
     }
 
     private void buscarJugador() {
@@ -75,8 +73,7 @@ public class RetirarJugador extends JDialog {
         textCedula.requestFocus();
     }
 
-    public void regresarButton() {
-        regresarButton.addActionListener(e -> {
+    public void regresar() {
             this.dispose();
             if (parent != null) {
                 parent.requestFocus();
@@ -84,7 +81,6 @@ public class RetirarJugador extends JDialog {
                 parent.setVisible(true);
 
             }
-        });
     }
 
 
