@@ -27,4 +27,13 @@ public class RegistrarJugador {
             }
         });
     }
+
+    public void mostrar() {
+        JFrame frame = new JFrame("Registrar Jugador");
+        frame.setContentPane(panelPrincipal);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
 }

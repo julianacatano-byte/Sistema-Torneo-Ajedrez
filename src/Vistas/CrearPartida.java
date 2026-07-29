@@ -9,6 +9,7 @@ public class CrearPartida {
     private JButton btnCrearPartida;
     private JButton btnCerrar;
     private JTextPane txtResultado;
+    private JPanel panelPrincipal;
 
     public CrearPartida() {
         btnCrearPartida.addActionListener(new ActionListener() {
@@ -23,5 +24,14 @@ public class CrearPartida {
 
             }
         });
+    }
+
+    public void mostrar() {
+        JFrame frame = new JFrame("Crear Partida");
+        frame.setContentPane((JPanel) btnCrearPartida.getParent());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }

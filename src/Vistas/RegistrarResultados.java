@@ -19,6 +19,7 @@ public class RegistrarResultados {
     private JButton btnRegistrarResultado;
     private JButton btnLimpiar;
     private JTextField textIDPartida;
+    private JPanel panelPrincipal;
 
     private ListaPartidas listaPartidas;
 
@@ -62,5 +63,14 @@ public class RegistrarResultados {
                 rbEmpate.setSelected(false);
             }
         });
+    }
+
+    public void mostrar() {
+        JFrame frame = new JFrame("Registrar Resultados");
+        frame.setContentPane((JPanel) btnRegistrarResultado.getParent());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }
