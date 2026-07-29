@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Ranking extends JDialog {
     private JPanel contentPane;
-    private JButton buttonCancel;
+    private JButton btnRegresar;
     private JPanel mostrarLista;
     private JLabel lblRanking;
     private JTextArea textLista;
@@ -37,5 +37,16 @@ public class Ranking extends JDialog {
         }
     }
 
+    public void regresarButton() {
+        btnRegresar.addActionListener(e -> {
+            this.dispose();
+            if (parent != null) {
+                parent.requestFocus();
+                parent.revalidate();
+                parent.setVisible(true);
+
+            }
+        });
+    }
 
 }
