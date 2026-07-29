@@ -5,7 +5,9 @@
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="eb9a" class="javax.swing.JLabel" binding="lblTitulo">
@@ -13,6 +15,8 @@
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font size="22" style="1"/>
+          <foreground color="-15906911"/>
           <text value="Sistema Torneo Ajedrez"/>
         </properties>
       </component>
@@ -26,6 +30,8 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
           <text value="Registrar Jugador"/>
         </properties>
       </component>
@@ -34,6 +40,9 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
+          <hideActionText value="true"/>
           <text value="Crear Partida"/>
         </properties>
       </component>
@@ -42,6 +51,8 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
           <text value="Registrar Resultado"/>
         </properties>
       </component>
@@ -50,6 +61,8 @@
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
           <text value="Historial Partidas"/>
         </properties>
       </component>
@@ -58,6 +71,8 @@
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
           <text value="Ver Ranking"/>
         </properties>
       </component>
@@ -66,6 +81,8 @@
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
           <text value="Buscar Jugador por Cedula"/>
         </properties>
       </component>
@@ -74,6 +91,8 @@
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
           <text value="Retirar Jugador"/>
         </properties>
       </component>
@@ -82,6 +101,8 @@
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15906911"/>
+          <foreground color="-1"/>
           <text value="Mostrar Jugadores por Niveles"/>
         </properties>
       </component>
@@ -90,6 +111,8 @@
           <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-2937041"/>
+          <foreground color="-1"/>
           <text value="Salir"/>
         </properties>
       </component>

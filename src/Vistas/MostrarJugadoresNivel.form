@@ -5,7 +5,10 @@
     <constraints>
       <xy x="48" y="54" width="436" height="297"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-1"/>
+      <enabled value="false"/>
+    </properties>
     <border type="none"/>
     <children>
       <grid id="94766" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -34,6 +37,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-15906911"/>
+                  <foreground color="-1"/>
                   <text value="Mostrar"/>
                 </properties>
               </component>
@@ -42,6 +47,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-9079435"/>
+                  <foreground color="-1"/>
                   <text value="Volver"/>
                 </properties>
               </component>
@@ -72,6 +79,8 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font size="22" style="1"/>
+          <foreground color="-15906911"/>
           <text value="MOSTRAR JUGADORES POR NIVEL"/>
         </properties>
       </component>
