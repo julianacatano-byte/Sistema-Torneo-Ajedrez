@@ -101,8 +101,8 @@ public class AdministradorTorneo {
 
     }
 
-    public void mostrarHistorial() {
-        historial.mostrarHistorial();
+    public String mostrarHistorial() {
+        return historial.mostrarHistorial();
     }
 
     public Jugador buscarJugador(String cedula) {
@@ -119,5 +119,10 @@ public class AdministradorTorneo {
 
     public int totalPartidas() {
         return historial.cantidadPartidas();
+    }
+
+    public String mostrarJugadoresPorNiveles(){
+        return ranking.mostrarPorNiveles();
+
     }
 }

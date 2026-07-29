@@ -15,6 +15,7 @@ public class BuscarCedula extends JDialog {
     private JTextField textCedula;
     private JButton buscarButton;
     private JTextArea txtInformacion;
+    private JButton regresarButton;
     private AdministradorTorneo administrador;
     private Window parent;
 
@@ -25,10 +26,11 @@ public class BuscarCedula extends JDialog {
         setModal(true);
         txtInformacion.setEditable(false);
         buscarButton.addActionListener((ActionEvent e) -> buscarJugador());
+        regresarButton.addActionListener((ActionEvent e) -> regresar());
+
     }
 
     private void buscarJugador() {
-
         String cedula = textCedula.getText().trim();
 
         if (cedula.isEmpty()) {
@@ -45,6 +47,18 @@ public class BuscarCedula extends JDialog {
         String informacion = "Nombre : " + jugador.getNombre() + "\n\nCédula : " + jugador.getCedula() + "\n\nPuntaje : " + jugador.getPuntaje();
         txtInformacion.setText(informacion);
 
+    }
+
+    public void regresar() {
+        regresarButton.addActionListener(e -> {
+            this.dispose();
+            if (parent != null) {
+                parent.requestFocus();
+                parent.revalidate();
+                parent.setVisible(true);
+
+            }
+        });
     }
 
 }

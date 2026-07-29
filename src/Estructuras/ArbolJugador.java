@@ -176,23 +176,31 @@ public class ArbolJugador {
         return derecha + 1;
     }
 
-    public void mostrarPorNiveles() {
+    public String mostrarPorNiveles() {
+
+        StringBuilder sb = new StringBuilder();
         int altura = altura();
         for (int i = 1; i <= altura; i++) {
-            System.out.println("Nivel " + (i - 1));
-            imprimirNivel(raiz, i);
+            sb.append("Nivel ").append(i - 1).append("\n");
+            imprimirNivel(raiz, i, sb);
+            sb.append("\n");
         }
+        return sb.toString();
+
     }
 
-    private void imprimirNivel(NodoArbol nodo, int nivel) {
-        if (nodo == null)
+    private void imprimirNivel(NodoArbol nodo, int nivel, StringBuilder sb){
+        if(nodo == null){
             return;
-        if (nivel == 1) {
-            System.out.println(nodo.getJugador().getNombre());
-        } else {
-            imprimirNivel(nodo.getIzquierda(), nivel - 1);
-            imprimirNivel(nodo.getDerecha(), nivel - 1);
         }
+        if(nivel == 1){
+            sb.append(nodo.getJugador().getNombre()).append("  Puntaje: ").append(nodo.getJugador().getPuntaje()).append("\n");
+        }else{
+            imprimirNivel(nodo.getIzquierda(),nivel-1,sb);
+            imprimirNivel(nodo.getDerecha(),nivel-1,sb);
+
+        }
+
     }
 }
 

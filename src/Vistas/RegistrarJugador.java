@@ -1,10 +1,12 @@
 package Vistas;
 
 
+import Estructuras.AdministradorTorneo;
+import Modelos.Jugador;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 public class RegistrarJugador {
@@ -12,46 +14,58 @@ public class RegistrarJugador {
     private JTextField txtNombre;
     private JTextField txtCedula;
     private JButton btnRegistrar;
-    private JButton btnLimpiar;
+    private JButton regresarButton;
+    private JFrame frame;
     private Window parent;
-    private boolean visible;
+    private AdministradorTorneo administrador;
 
-    public RegistrarJugador(Window parent) {
+    public RegistrarJugador(Window parent,AdministradorTorneo administrador) {
+        this.administrador=administrador;
         this.parent=parent;
-        JFrame frame = new JFrame("Registrar Jugador");
+        frame = new JFrame("Registrar Jugador");
         frame.setContentPane(panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
-        btnRegistrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        btnLimpiar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        btnRegistrar.addActionListener((ActionEvent e) -> registrarJugador());
+        regresarButton.addActionListener((ActionEvent e) -> regresar());
     }
 
-    public void mostrar() {
 
+    private void registrarJugador() {
+
+        String nombre = txtNombre.getText().trim();
+        String cedula = txtCedula.getText().trim();
+
+        if (nombre.isEmpty() || cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "Debe completar todos los campos.");
+            return;
+        }
+        if (administrador.buscarJugador(cedula) != null) {
+            JOptionPane.showMessageDialog(frame, "Ya existe un jugador con esa cédula.");
+            return;
+        }
+
+        Jugador jugador = new Jugador(nombre, cedula);
+
+        administrador.inscribirJugador(jugador);
+
+        JOptionPane.showMessageDialog(frame, "Jugador registrado correctamente.");
+
+        txtNombre.setText("");
+        txtCedula.setText("");
+        txtNombre.requestFocus();
     }
 
-    public void regresarButton() {
-        regresarButton.addActionListener(e -> {
-            this.dispose();
-            if (parent != null) {
-                parent.requestFocus();
-                parent.revalidate();
-                parent.setVisible(true);
+    private void regresar() {
+        frame.dispose();
+        if (parent != null) {
 
-            }
-        });
+            parent.setVisible(true);
+            parent.requestFocus();
+
+        }
+
     }
 }

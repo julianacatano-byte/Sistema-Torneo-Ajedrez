@@ -22,6 +22,8 @@ public class RegistrarResultados {
     private JButton btnLimpiar;
     private JTextField textIDPartida;
     private JPanel panelPrincipal;
+    private JButton regresarButton;
+    private JFrame frame;
     private Window parent;
     private ListaPartidas listaPartidas;
     private AdministradorTorneo administrador;
@@ -29,8 +31,9 @@ public class RegistrarResultados {
     public RegistrarResultados(Window parent, AdministradorTorneo administrador) {
         this.administrador=administrador;
         this.parent=parent;
-        JFrame frame = new JFrame("Registrar Resultados");
-        frame.setContentPane((JPanel) btnRegistrarResultado.getParent());
+
+        frame = new JFrame("Registrar Resultados");
+        frame.setContentPane(panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -55,9 +58,7 @@ public class RegistrarResultados {
                     return;
                 }
 
-                JOptionPane.showMessageDialog(null,
-                        "Partida: " + id + "\nResultado: " + resultado);
-            }
+                JOptionPane.showMessageDialog(null, "Partida: " + id + "\nResultado: " + resultado);}
         });
 
 
@@ -76,16 +77,11 @@ public class RegistrarResultados {
         });
     }
 
-
-    public void regresarButton() {
-        regresarButton.addActionListener(e -> {
-            this.dispose();
-            if (parent != null) {
-                parent.requestFocus();
-                parent.revalidate();
-                parent.setVisible(true);
-
-            }
-        });
+    private void regresar() {
+        frame.dispose();
+        if (parent != null) {
+            parent.setVisible(true);
+            parent.requestFocus();
+        }
     }
 }

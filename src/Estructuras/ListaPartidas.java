@@ -18,12 +18,24 @@ public class ListaPartidas {
         }
     }
 
-    public void mostrarHistorial() {
+    public String mostrarHistorial() {
+        StringBuilder sb = new StringBuilder();
         NodoLista actual = inicio;
-        while (actual != null) {
-            System.out.println("Partida: " + actual.getPartida().getidPartida() + " Resultado: " + actual.getPartida().getResultado());
+
+        if(actual == null){
+            return "No existen partidas registradas.";
+
+        }
+
+        while(actual != null){
+            sb.append("Partida: ").append(actual.getPartida().getidPartida()).append("\n");
+            sb.append("Jugador Blancas: ").append(actual.getPartida().getJugadorConPiezasBlancas().getNombre()).append("\n");
+            sb.append("Jugador Negras: ").append(actual.getPartida().getJugadorConPiezasNegras().getNombre()).append("\n");
+            sb.append("Resultado: ").append(actual.getPartida().getResultado()).append("\n");
+            sb.append("--------------------------------------\n");
             actual = actual.getSiguiente();
         }
+        return sb.toString();
     }
 
     public Partida buscarPartida(int idPartida){

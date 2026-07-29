@@ -75,5 +75,17 @@ public class RetirarJugador extends JDialog {
         textCedula.requestFocus();
     }
 
+    public void regresarButton() {
+        regresarButton.addActionListener(e -> {
+            this.dispose();
+            if (parent != null) {
+                parent.requestFocus();
+                parent.revalidate();
+                parent.setVisible(true);
+
+            }
+        });
+    }
+
 
 }
